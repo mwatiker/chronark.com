@@ -6,19 +6,19 @@ import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "chronark.com",
-    template: "%s | chronark.com",
+    default: "2CUBE",
+    template: "2CUBE template",
   },
   description: "Co-founder of unkey.dev and founder of planetfall.io",
   openGraph: {
-    title: "chronark.com",
+    title: "2CUBE",
     description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "chronark.com",
+      "Gamifying Training",
+    url: "https://2cubestudios.com",
+    siteName: "2CUBE",
     images: [
       {
-        url: "https://chronark.com/og.png",
+        url: "https://2cubestudios.com/og-image.png",
         width: 1920,
         height: 1080,
       },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "2CUBE",
     card: "summary_large_image",
   },
   icons: {
