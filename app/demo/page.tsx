@@ -12,8 +12,8 @@ export default function DemoPage() {
       {/* Unity Player Section */}
       <div className="flex-1 w-full flex items-center justify-center py-12 px-6">
         <FullScreenUnityPlayer 
-          mobilePath="/unity/dec1webGL01/index.html"
-          standardPath="/unity/dec1webGL01/index.html"
+          mobilePath="/unity/dec1webGL012/index.html"
+          standardPath="/unity/dec1webGL012/index.html"
         />
       </div>
 
