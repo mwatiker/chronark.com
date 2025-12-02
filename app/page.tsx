@@ -138,8 +138,8 @@ export default async function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             {/* Founder 1 */}
-            <div className="bg-zinc-900/80 rounded-xl overflow-hidden border border-zinc-800 backdrop-blur-sm shadow-xl transition-all duration-300 relative">
-              <div className="h-64 bg-gray-900 relative animate-[move-bg_3s_linear_infinite]" style={{
+            <div className="bg-zinc-900/80 rounded-xl overflow-hidden border border-zinc-800 backdrop-blur-sm shadow-xl transition-all duration-300 relative flex flex-col h-[26rem]">
+              <div className="h-72 bg-gray-900 relative animate-[move-bg_3s_linear_infinite] flex items-end justify-center overflow-hidden px-8 pt-8" style={{
                 backgroundImage: `
                 linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
@@ -158,10 +158,8 @@ export default async function Home() {
                 <img
                   src="/evan_cut.png"
                   alt="Evan Wu"
-                  className="mx-auto scale-[.75] transform translate-y-[+3px]"
-                // transform translate-y-[-40px]
-
-
+                  className="max-h-64 w-auto object-contain"
+                  style={{ maxHeight: '16rem', maxWidth: '80%' }}
                 />
               </div>
               <div className="p-6 flex flex-col items-center text-center">
@@ -180,8 +178,8 @@ export default async function Home() {
             </div>
 
             {/* Founder 2 */}
-            <div className="bg-zinc-900/80 rounded-xl overflow-hidden border border-zinc-800 backdrop-blur-sm shadow-xl transition-all duration-300 relative">
-              <div className="h-64 bg-gray-900 relative animate-[move-bg_3s_linear_infinite]" style={{
+            <div className="bg-zinc-900/80 rounded-xl overflow-hidden border border-zinc-800 backdrop-blur-sm shadow-xl transition-all duration-300 relative flex flex-col h-[26rem]">
+              <div className="h-72 bg-gray-900 relative animate-[move-bg_3s_linear_infinite] flex items-end justify-center overflow-hidden px-8 pt-8" style={{
                 backgroundImage: `
       linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
@@ -200,7 +198,8 @@ export default async function Home() {
                 <img
                   src="/matt_cut.png"
                   alt="Matthew Watiker"
-                  className="mx-auto scale-[.6] transform translate-y-[-40px] filter brightness-75"
+                  className="max-h-64 w-auto object-contain filter brightness-75"
+                  style={{ maxHeight: '16rem', maxWidth: '80%' }}
                 />
               </div>
 

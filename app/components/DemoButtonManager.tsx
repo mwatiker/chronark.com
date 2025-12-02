@@ -6,12 +6,12 @@ import UnityPlayer from "./UnityPlayer";
 import VideoPlayer from "./VideoPlayer";
 
 export default function DemoButtonManager() {
-  const [activeDemo, setActiveDemo] = useState<"unity" | "video" | null>(null);
+  const [activeDemo, setActiveDemo] = useState<"unity" | null>(null);
   const [expanded, setExpanded] = useState(false);
   const [password, setPassword] = useState("");
   const [showUnity, setShowUnity] = useState(false);
 
-  const handleToggle = (type: "unity" | "video") => {
+  const handleToggle = (type: "unity") => {
     if (activeDemo === type) {
       setActiveDemo(null);
       setExpanded(false);
@@ -19,7 +19,7 @@ export default function DemoButtonManager() {
       setShowUnity(false);
     } else {
       setActiveDemo(type);
-      setExpanded(type === "unity"); // Only Unity needs to expand
+      setExpanded(true); // Only Unity needs to expand
       setPassword("");
       setShowUnity(false);
     }
@@ -37,7 +37,6 @@ export default function DemoButtonManager() {
   };
 
   const isUnityActive = activeDemo === "unity" && showUnity;
-  const isVideoActive = activeDemo === "video";
 
   return (
     <div className="w-full flex flex-col items-center p-0">
@@ -60,25 +59,6 @@ export default function DemoButtonManager() {
           }}
         >
           {isUnityActive ? "Close Demo" : "Access Demo"}
-        </motion.button>
-
-        <motion.button
-          onClick={() => handleToggle("video")}
-          whileTap={{
-            boxShadow:
-              "inset 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)",
-          }}
-          className="px-6 py-3 text-white font-semibold rounded-2xl relative transition-all duration-150 transform-gpu select-none bg-zinc-800 active:scale-[.99]"
-          style={{
-            boxShadow: `
-              0 6px 12px rgba(0, 0, 0, 0.55),
-              0 2px 4px rgba(0, 0, 0, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1),
-              inset 0 -1px 1px rgba(0, 0, 0, 0.2)
-            `,
-          }}
-        >
-          {isVideoActive ? "Close Video" : "Watch Demo"}
         </motion.button>
       </div>
 
@@ -116,19 +96,6 @@ export default function DemoButtonManager() {
             className="mt-6 overflow-hidden w-full"
           >
             <UnityPlayer />
-          </motion.div>
-        )}
-
-        {isVideoActive && (
-          <motion.div
-            key="video-player"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="mt-6 overflow-hidden w-full"
-          >
-            <VideoPlayer />
           </motion.div>
         )}
       </AnimatePresence>

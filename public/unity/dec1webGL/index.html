@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Unity Web Player | SushiSimulator</title>
+
+    <!-- Font Injection: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+    <style>
+      body {
+        text-align: center;
+        padding: 0;
+        border: 0;
+        margin: 0;
+        background: #231F20;
+        font-family: 'Inter', sans-serif;
+        color: rgb(255, 255, 255);
+      }
+
+      html, body {
+        height: 100%;
+        background: #231F20;
+      }
+
+      #unity-container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      #unity-canvas {
+        width: 418px;
+        height: 600px;
+        background: #231F20;
+      }
+
+      #loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .spinner {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #444;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+      }
+
+      #loading-percentage {
+        margin-top: 24px; /* Move it further down */
+        font-size: 14px;
+        color: rgb(192, 192, 192);
+        font-weight: 500;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="unity-container">
+      <!-- Loading Spinner -->
+      <div id="loader">
+        <div class="spinner"></div>
+        <div id="loading-percentage">0%</div>
+      </div>
+
+      <!-- Unity Canvas -->
+      <canvas id="unity-canvas" width="418" height="600" tabindex="-1"></canvas>
+    </div>
+
+    <!-- Unity Loader -->
+    <script src="Build/dec1webGL.loader.js"></script>
+    <script>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        arguments: [],
+        dataUrl: "Build/dec1webGL.data",
+        frameworkUrl: "Build/dec1webGL.framework.js",
+        codeUrl: "Build/dec1webGL.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "2Cube",
+        productName: "SushiSimulator",
+        productVersion: "0",
+      }, (progress) => {
+        const percent = Math.round(progress * 100);
+        document.getElementById("loading-percentage").innerText = percent + "%";
+      }).then((unityInstance) => {
+        document.getElementById('loader').style.display = 'none';
+      });
+    </script>
+  </body>
+</html>
